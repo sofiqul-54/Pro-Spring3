@@ -1,5 +1,6 @@
 package com.sofiqul54.qualifire;
 
 public interface Vehicle {
-    void dirve();
+    public void start();
+    public void stop();
 }

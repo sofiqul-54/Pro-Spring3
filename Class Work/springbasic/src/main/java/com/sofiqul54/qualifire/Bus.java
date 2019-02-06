@@ -1,9 +1,17 @@
 package com.sofiqul54.qualifire;
 
+import org.springframework.stereotype.Component;
+
+@Component(value = "busBean")
 public class Bus implements Vehicle {
 
     @Override
-    public void dirve() {
-        System.out.println("Drive a BUS");
+    public void start() {
+        System.out.println("Start BUS");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stopped BUS");
     }
 }

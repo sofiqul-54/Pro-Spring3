@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add-Page</title>
+</head>
+<body>
+<form action="#" th:object="${student}" th:action="@{/add/}" th:method="POST">
+    <table>
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" th:field="*{email}"></td>
+            <td th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+        </tr>
+        <tr>
+            <td>Phone :</td>
+            <td><input type="text" th:field="*{phone}"></td>
+            <td th:class="err" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></td>
+        </tr>
+        <tr>
+            <td>Age :</td>
+            <td><input type="text" th:field="*{age}"></td>
+            <td th:class="err" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></td>
+        </tr>
+        <tr>
+            <td>Gender :</td>
+            <td>
+                Male: <input type="radio" th:field="*{gender}" value="Male"/>
+                Female: <input type="radio" th:field="*{gender}" value="Female"/>
+            </td>
+            <td th:class="err" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></td>
+        </tr>
+        <tr>
+            <td>Course :</td>
+            <td>
+                J2EE <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+                C# <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+                WDPF <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+                DDD <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+                NT <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+            </td>
+            <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Round:</td>
+            <td>
+                <select th:field="*{round}">
+                    <option value="">Select the Round</option>
+                    <option value="36">Round-36</option>
+                    <option value="37">Round-37</option>
+                    <option value="38">Round-38</option>
+                    <option value="39">Round-39</option>
+                    <option value="40">Round-40</option>
+                </select>
+            </td>
+            <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{round}"></td>
+        </tr>
+        <tr>
+            <td>Birthday</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Save</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+</html>

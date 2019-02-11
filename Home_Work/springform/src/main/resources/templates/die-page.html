@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        .err {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<form th:object="${dateImage}" th:action="@{/die}" th:method="POST" enctype="multipart/form-data">
+    <table>
+        <input type="hidden" th:field="*{id}" th:value="${dateImage.id}"/>
+       <!-- <input type="hidden" th:field="*{regiDate}" th:value="${dateImage.regiDate}"/>-->
+        <tr>
+            <td>Birth Date :</td>
+            <td><input type="date" th:field="*{birthdate}" /></td>
+        </tr>
+        <tr>
+            <td>Photo :</td>
+            <td>
+                <input type="file" name="file"/>
+            </td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

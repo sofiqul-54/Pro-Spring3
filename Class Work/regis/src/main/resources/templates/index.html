@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .mm {
+
+            color: green;
+        }
+
+        .err {
+            color: red;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Add-Page</title>
+</head>
+<body>
+<form>
+    <a th:href="@{/add}"></a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>Round</th>
+        </tr>
+        <tr th:each="s:${list}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.email}"></td>
+            <td th:text="${s.phone}"></td>
+            <td th:text="${s.age}"></td>
+            <td th:text="${s.gender}"></td>
+            <td >
+                <span th:each="c:${s.courseCompleted}">
+                    <span th:text="${c}"></span>
+                </span>
+            </td>
+            <td th:text="${s.round}"></td>
+            <td><a th:href="@{'/edit/' + ${s.id}}">Edit</a></td>
+            <td><a th:href="@{'/del/' + ${s.id}}">Delete</a></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

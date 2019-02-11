@@ -5,10 +5,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Add-Page</title>
+    <style>
+
+        #cu {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #cu td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #cu tr:nth-child(even){background-color: #f2f2f2;}
+
+        #cu tr:hover {background-color: #ddd;}
+
+        #cu th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
 <form action="#" th:object="${student}" th:action="@{/add/}" th:method="POST">
-    <table>
+    <table id="cu">
         <tr>
             <td>Name :</td>
             <td><input type="text" th:field="*{name}"></td>
@@ -40,11 +66,11 @@
         <tr>
             <td>Course :</td>
             <td>
-                J2EE <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
-                C# <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
-                WDPF <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
-                DDD <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
-                NT <input type="checkbox" value="Java" th:field="*{courseCompleted}"/>
+                J2EE <input type="checkbox" value="J2EE" th:field="*{courseCompleted}"/>
+                C# <input type="checkbox" value="C#" th:field="*{courseCompleted}"/>
+                WDPF <input type="checkbox" value="WDPF" th:field="*{courseCompleted}"/>
+                DDD <input type="checkbox" value="DDD" th:field="*{courseCompleted}"/>
+                NT <input type="checkbox" value="NT" th:field="*{courseCompleted}"/>
             </td>
             <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
         </tr>

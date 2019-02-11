@@ -20,7 +20,7 @@
     <tr>
         <td>Name:</td>
         <td><input type="text" th:field="*{name}" th:value="${user.name}" /></td>
-        <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        <td th:class="err" th:if="${#fields.hasErrors('name')}"/>
     </tr>
     <tr>
         <td>Age:</td>

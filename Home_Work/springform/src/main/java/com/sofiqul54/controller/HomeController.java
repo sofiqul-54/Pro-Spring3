@@ -28,11 +28,12 @@ public class HomeController {
     public String saveForm(@Valid Student student, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "add-page";
+        }else {
+            student.setRegiDate(new Date());
+            this.repo.save(student);
+            model.addAttribute("student", new Student());
+            model.addAttribute("successMsg", "Congratulation!! You are eligible sign up for this sie");
         }
-        student.setRegiDate(new Date());
-        this.repo.save(student);
-        model.addAttribute("student", new Student());
-        model.addAttribute("successMsg", "Congratulation!! You are eligible sign up for this sie");
         return "add-page";
     }
 
@@ -62,11 +63,12 @@ public class HomeController {
 
 @PostMapping(value = "/edit/{id}")
     public String edit(@Valid Student student, BindingResult bindingResult,
-                       @PathVariable ("id") Long id){
+                       @PathVariable("id") Long id){
         if (bindingResult.hasErrors()){
             return "edit-page";
+        }else {
+            this.repo.save(student);
         }
-        this.repo.save(student);
         return "redirect:/";
 }
 

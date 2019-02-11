@@ -28,7 +28,13 @@ public class HomeController {
         }
         this.studentRepo.save(student);
         model.addAttribute("student", new Student());
-        return "redirect:/";
+        return "add-page";
+    }
+
+    @GetMapping(value = "/")
+    public String index(Model model){
+        model.addAttribute("list", this.studentRepo.findAll());
+        return "index";
     }
 
 

@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<form th:object="${student}" th:action="@{/edit/}" th:method="POST">
+<form th:object="${student}" th:action="@{/edit/}+${id}" th:method="POST">
     <a th:href="@{/}">List</a>
     <table>
         <input type="hidden" th:field="*{id}" th:value="${student.id}"/>
@@ -45,7 +45,7 @@
             <td>Round :</td>
             <td>
                 <select th:field="*{round}">
-                    <option th:value="Round" th:style="">Select A Round</option>
+                    <option th:value="Round">Select A Round</option>
                     <option th:value="Round-37">Round-37</option>
                     <option th:value="Round-38">Round-38</option>
                     <option th:value="Round-39">Round-39</option>
@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td>Birth Date :</td>
-            <td><input type="date" th:fied="*{birthDate}"/></td>
+            <td><input type="date" th:field="*{birthDate}"/></td>
             <td th:class="err" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">BirthDate Error</td>
         </tr>
         <tr>

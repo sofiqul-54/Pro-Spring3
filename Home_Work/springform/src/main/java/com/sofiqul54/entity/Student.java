@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "student1")
+@Table(name = "st")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,16 +53,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(@NotNull @Size(min = 2, max = 30, message = "Enter Your Name") String name, @NotBlank(message = "Select Your Gender") String gender, @NotBlank @Email String email, @NotBlank(message = "Select Your Round") String round, @NotBlank(message = "Select Your Course") String course, Date regiDate, Date lastModifiedDate, Date birthDate) {
-        this.name = name;
-        this.gender = gender;
-        this.email = email;
-        this.round = round;
-        Course = course;
-        this.regiDate = regiDate;
-        this.lastModifiedDate = lastModifiedDate;
-        this.birthDate = birthDate;
-    }
+
 
     public Long getId() {
         return id;

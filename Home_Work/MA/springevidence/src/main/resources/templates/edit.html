@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.css"/>
+    <link href="/css/bootstrap.min.css"/>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!--<link href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>-->
+    <!--<link href="css/bootstrap.css" th:href="@{css/bootstrap.css}" rel="stylesheet"/>-->
+    <!--<script src="js/bootstrap.min.js" th:href="@{js/bootstrap.min.js}"></script>-->
+    <!--<script src="../static/js/bootstrap.js"></script>-->
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+</head>
+<body>
+        <form action="#" th:object="${student}" th:action="@{/edit/} + ${id}" th:method="POST" class="mm" enctype="multipart/form-data">
+            <div class="">
+                <div role="navigation">
+                    <div class="navbar navbar-inverse">
+                        <a href="#" class="navbar-brand">BootStrap</a>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#" th:href="@{/add}">Student Form</a></li>
+                                <li><a href="#" th:href="@{/}">All Data</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" th:field="*{id}" th:value="${student.id}" />
+                <div class="form-group row">
+                    <label for="name1" class="col-sm-1 col-form-label">Name:</label>
+                    <div class="col-lg-5">
+                        <input id="name1" type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="email2" class="col-sm-1 col-form-label">Email:</label>
+                    <div class="col-lg-5">
+                        <input id="email2" type="email" th:field="*{email}" class="form-control" placeholder="Email"/>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone3" class="col-sm-1 col-form-label">Phone:</label>
+                    <div class="col-lg-5">
+                        <input id="phone3" type="text" th:field="*{phone}" class="form-control" placeholder="Phone"/>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="age4" class="col-sm-1 col-form-label">Age:</label>
+                    <div class="col-lg-5">
+                        <input id="age4" type="text" th:field="*{age}" class="form-control" placeholder="Age"/>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="bdate" class="col-sm-1 col-form-label">Birth_Date:</label>
+                    <div class="col-lg-5">
+                        <input type="date" th:field="*{birthDate}" class="form-control" id="bdate"/>
+                    </div>
+                    <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></label></div>-->
+                </div>
+                <div class="form-group row">
+                    <label for="gender8" class="col-sm-1 col-form-label">Gender:</label>
+                    <div class="col-sm-5">
+                        <div class="form-check">
+                            Male</Male><input class="form-check-input" id="gender8" type="radio" th:field="*{gender}" value="Male">
+                            <!--<label class="form-check-label" for="age4">-->
+                            <!--Male-->
+                            <!--</label>-->
+                            Female<input class="form-check-input" id="gender8" type="radio" th:field="*{gender}" value="Female">
+                            <!--<label class="form-check-label" for="age4">-->
+                            <!--FeMale-->
+                            <!--</label>-->
+                        </div>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="course9" class="col-sm-1 col-form-label">C_Course:</label>
+                    <div class="col-sm-5">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="course9" th:field="*{c_course}" value="Java">
+                            <label class="form-check-label" for="course9">
+                                Java
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('c_course')}" th:errors="*{c_course}"></label></div>
+                </div>
+                <div class="form-group row">
+                    <label for="round7" class="col-sm-1 col-form-label">Round:</label>
+                    <div class="col-lg-5">
+                        <select class=" form-control mr-sm-2" id="round7" th:field="*{round}">
+                            <option value="" selected>Select the Round</option>
+                            <option value="37">Round-37</option>
+                            <option value="38">Round-38</option>
+                            <option value="39">Round-39</option>
+                            <option value="40">Round-40</option>
+                            <option value="41">Round-41</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4"><label th:if="${#fields.hasErrors('round')}" th:errors="*{round}"></label></div>
+                </div>
+                <!--<div class="form-group row">-->
+                    <!--<label for="date77" class="col-sm-1 col-form-label">Date:</label>-->
+                    <!--<div class="col-lg-5">-->
+                        <!--<input type="date" th:field="*{regiDate}" class="form-control" id="date77"/>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>-->
+                <!--</div>-->
+                <!--///file-->
+                <div class="form-group row">
+                    <label for="image" class="col-sm-1 col-form-label">Uplode Image:</label>
+                    <div class="col-lg-5">
+                        <input type="file" name="file" class="form-control" id="image"/>
+                    </div>
+                    <!--<div class="col-sm-4"><label th:if="${#fields.hasErrors('regiDate')}" th:errors="*{regiDate}"></label></div>-->
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+<a th:href="@{/}">Home Page</a>
+</body>
+</html>

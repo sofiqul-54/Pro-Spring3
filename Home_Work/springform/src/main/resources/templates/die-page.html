@@ -16,10 +16,10 @@
     </style>
 </head>
 <body>
-<form th:object="${dateImage}" th:action="@{/die}" th:method="POST" enctype="multipart/form-data">
+<form th:object="${dateImage}" th:action="@{/edit-di/}+${id}" th:method="POST" enctype="multipart/form-data">
     <table>
         <input type="hidden" th:field="*{id}" th:value="${dateImage.id}"/>
-       <!-- <input type="hidden" th:field="*{regiDate}" th:value="${dateImage.regiDate}"/>-->
+       <input type="hidden" th:field="*{regiDate}" th:value="${dateImage.regiDate}"/>
         <tr>
             <td>Birth Date :</td>
             <td><input type="date" th:field="*{birthdate}" /></td>

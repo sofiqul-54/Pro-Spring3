@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <style>
+        .mm{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+                background-color: #999999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div role="navigation">
+    <div class="navbar navbar-inverse">
+        <a href="#" class="navbar-brand">BootStrap</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#" th:href="@{/add}">Student Form</a></li>
+                <li><a href="#" th:href="@{/}">All Data</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<a th:href="@{/add}">Add NewUser</a>
+<table id="customers">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Age</th>
+        <th>Birth_Date</th>
+        <th>Gender</th>
+        <th>C_Course</th>
+        <th>Round</th>
+        <th>Regi_Date</th>
+        <th>Last_Modify</th>
+        <th>Uplode Image</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="u :${lists}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.email}"></td>
+        <td th:text="${u.phone}"></td>
+        <td th:text="${u.age}"></td>
+        <td th:text="${u.birthDate}"></td>
+        <td th:text="${u.gender}"></td>
+        <td th:text="${u.c_course}"></td>
+        <td th:text="${u.round}"></td>
+        <td th:text="${u.regiDate}"></td>
+        <td th:text="${u.lastMDate}"></td>
+        <td><img th:src="@{${u.filePath}}" width="90" height="90"/></td>
+        <td><a th:href="@{'/edit/'+${u.id}}">Edit</a></td>
+        <td><a th:href="@{'/del/'+${u.id}}">Del</a></td>
+
+    </tr>
+</table>
+</body>
+</html>

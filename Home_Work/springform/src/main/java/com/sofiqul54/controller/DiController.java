@@ -86,8 +86,9 @@ public class DiController {
                          @PathVariable("id") Long id){
         if (bindingResult.hasErrors()){
             return "die-page";
+        }else {
+            this.repo.save(dateImage);
         }
-        this.repo.save(dateImage);
         return "redirect:/di-list";
     }
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+<h2>Add Role</h2>
+<span th:text="${exitMsg}"></span>
+<span th:text="${syccessMsg}"></span>
+        <form action="#" th:object="${role}" th:action="@{/roleAdd}" th:method="POST">
+            <div class="form-group row">
+                <label for="name1" class="col-sm-1 col-form-label">Role_Name:</label>
+                <div class="col-lg-5">
+                    <input id="name1" type="text" th:field="*{rolename}" class="form-control" placeholder="Role_Name"/>
+                </div>
+                <div class="col-sm-4"><label th:if="${#fields.hasErrors('rolename')}" th:errors="*{rolename}"></label></div>
+            </div>
+            <button type="submit">Save</button>
+        </form>
+</body>
+</html>

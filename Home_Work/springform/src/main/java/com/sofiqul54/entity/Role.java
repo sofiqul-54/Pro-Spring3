@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ur")
-public class UserRole {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +15,7 @@ public class UserRole {
     @Column(unique = true, name = "role_name")
     private String roleName;
 
-    public UserRole() {
+    public Role() {
     }
 
     public Long getId() {
@@ -36,7 +36,7 @@ public class UserRole {
 
     @Override
     public String toString() {
-        return "UserRole{" +
+        return "Role{" +
                 "id=" + id +
                 ", roleName='" + roleName + '\'' +
                 '}';
@@ -47,9 +47,9 @@ public class UserRole {
 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserRole userRole = (UserRole) o;
-        return Objects.equals(id, userRole.id) &&
-                Objects.equals(roleName, userRole.roleName);
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) &&
+                Objects.equals(roleName, role.roleName);
     }
 
     @Override

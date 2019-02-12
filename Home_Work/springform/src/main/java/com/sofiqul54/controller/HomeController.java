@@ -39,7 +39,7 @@ public class HomeController {
             model.addAttribute("user", new User());
             model.addAttribute("successMsg", "Congratulation!! You are eligible sign up for this sie");
         }
-        model.addAttribute("roleList1", this.roleRepo.findAll());
+        model.addAttribute("roleList", this.roleRepo.findAll());
         return "add-page";
     }
 

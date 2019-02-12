@@ -1,7 +1,8 @@
 package com.sofiqul54.controller;
 
-import com.sofiqul54.entity.Student;
-import com.sofiqul54.repository.StudentRepo;
+import com.sofiqul54.entity.User;
+import com.sofiqul54.repository.RoleRepo;
+import com.sofiqul54.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,24 +17,29 @@ import java.util.Date;
 @Controller
 public class HomeController {
     @Autowired
-    private StudentRepo repo;
+    private UserRepo repo;
+
+    @Autowired
+    private RoleRepo roleRepo;
 
     @GetMapping(value = "/add")
-    public String viewForm(Student student) {
+    public String viewForm(User user, Model model) {
+        model.addAttribute("roleList", this.roleRepo.findAll());
 
         return "add-page";
     }
 
     @PostMapping(value = "/add")
-    public String saveForm(@Valid Student student, BindingResult bindingResult, Model model){
+    public String saveForm(@Valid User user, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "add-page";
         }else {
-            student.setRegiDate(new Date());
-            this.repo.save(student);
-            model.addAttribute("student", new Student());
+            user.setRegiDate(new Date());
+            this.repo.save(user);
+            model.addAttribute("user", new User());
             model.addAttribute("successMsg", "Congratulation!! You are eligible sign up for this sie");
         }
+        model.addAttribute("roleList1", this.roleRepo.findAll());
         return "add-page";
     }
 
@@ -57,18 +63,20 @@ public class HomeController {
 
     @GetMapping(value = "/edit/{id}")
     public String editView(Model model, @PathVariable ("id") Long id){
-        model.addAttribute("student", this.repo.getOne(id));
+        model.addAttribute("user", this.repo.getOne(id));
+        model.addAttribute("roleList", this.roleRepo.findAll());
         return "edit-page";
 }
 
 @PostMapping(value = "/edit/{id}")
-    public String edit(@Valid Student student, BindingResult bindingResult,
-                       @PathVariable("id") Long id){
+    public String edit(@Valid User user, BindingResult bindingResult,
+                       @PathVariable("id") Long id, Model model){
         if (bindingResult.hasErrors()){
             return "edit-page";
         }else {
-            this.repo.save(student);
+            this.repo.save(user);
         }
+    model.addAttribute("roleList", this.roleRepo.findAll());
         return "redirect:/";
 }
 

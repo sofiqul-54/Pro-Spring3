@@ -10,10 +10,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "st")
-public class Student {
+@Table(name = "stdn")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Student {
     @Column(unique = true)
     private String email;
 
-    @NotBlank (message = "Select Your Round")
+    @NotBlank(message = "Select Your Round")
     private String round;
 
     @NotBlank(message = "Select Your Course")
@@ -43,17 +44,37 @@ public class Student {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastModifiedDate=new Date();
+    private Date lastModifiedDate = new Date();
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
+    @NotBlank
+    @Size(min = 4, max = 30, message = "Enter a Valid  Username")
+    private String username;
 
-    public Student() {
+    @NotBlank
+    @Size(min = 6, max = 30, message = "Enter Your Password")
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "u_id"),
+            inverseJoinColumns = @JoinColumn(name = "r_id"))
+    private Set<Role> roles;
+
+    public User() {
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
@@ -127,9 +148,39 @@ public class Student {
         this.birthDate = birthDate;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public User(@NotNull @Size(min = 2, max = 30, message = "Enter Your Name") String name, @NotBlank(message = "Select Your Gender") String gender, @NotBlank @Email String email, @NotBlank(message = "Select Your Round") String round, @NotBlank(message = "Select Your Course") String course, Date regiDate, Date lastModifiedDate, Date birthDate, @NotBlank @Size(min = 4, max = 30, message = "Enter a Valid  Username") String username, @NotBlank @Size(min = 6, max = 30, message = "Enter Your Password") String password) {
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.round = round;
+        Course = course;
+        this.regiDate = regiDate;
+        this.lastModifiedDate = lastModifiedDate;
+        this.birthDate = birthDate;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
@@ -139,6 +190,8 @@ public class Student {
                 ", regiDate=" + regiDate +
                 ", lastModifiedDate=" + lastModifiedDate +
                 ", birthDate=" + birthDate +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -146,20 +199,24 @@ public class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id) &&
-                Objects.equals(name, student.name) &&
-                Objects.equals(gender, student.gender) &&
-                Objects.equals(email, student.email) &&
-                Objects.equals(round, student.round) &&
-                Objects.equals(Course, student.Course) &&
-                Objects.equals(regiDate, student.regiDate) &&
-                Objects.equals(lastModifiedDate, student.lastModifiedDate) &&
-                Objects.equals(birthDate, student.birthDate);
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(gender, user.gender) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(round, user.round) &&
+                Objects.equals(Course, user.Course) &&
+                Objects.equals(regiDate, user.regiDate) &&
+                Objects.equals(lastModifiedDate, user.lastModifiedDate) &&
+                Objects.equals(birthDate, user.birthDate) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, gender, email, round, Course, regiDate, lastModifiedDate, birthDate);
+        return Objects.hash(id, name, gender, email, round, Course, regiDate, lastModifiedDate, birthDate, username, password);
     }
+
+
 }

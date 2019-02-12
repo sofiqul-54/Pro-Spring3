@@ -21,7 +21,8 @@
 
         <div class="col-md-12">
             <div class="table-responsive">
-                <a th:href="@{/add}">Add User</a>
+                <a class="btn" th:href="@{/add}">Add User</a>
+                <a class="btn" th:href="@{/role-list}">Add Roles</a>
                 <table id="mytable" class="table table-bordred table-striped">
                     <tr>
 
@@ -34,6 +35,9 @@
                         <th>Reg. Date</th>
                         <th>Last Modified Date</th>
                         <th>Birth Date</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Roles Name</th>
                         <th>Update</th>
                         <th>Delete</th>
 
@@ -52,6 +56,13 @@
                         <td th:text="${u.regiDate}"></td>
                         <td th:text="${u.lastModifiedDate}"></td>
                         <td th:text="${u.birthDate}" th:pattern="yyyy-MM-dd"></td>
+                        <td th:text="${u.username}"></td>
+                        <td th:text="${u.password}"></td>
+                        <td>
+                    <span th:each="cc: ${u.roles}">
+                        <span th:text="${cc.roleName}"></span>
+                    </span>
+                        </td>
                         <td><a th:href="@{'/edit/' + ${u.id}}">Update</a></td>
                         <td><a th:href="@{'/del/' + ${u.id}}">Delete</a></td>
                     </tr>

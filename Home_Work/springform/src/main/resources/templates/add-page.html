@@ -16,8 +16,19 @@
     </style>
 </head>
 <body>
-<form th:object="${student}" th:action="@{/add}" th:method="POST">
+<form th:object="${user}" th:action="@{/add}" th:method="POST">
+    <span th:class="succes" th:text="${successMsg}"></span>
     <table>
+        <tr>
+            <td>Roles :</td>
+            <td>
+                <select th:field="*{roles}" multiple>
+                    <option th:each="role : ${roleList1}" th:value="${role.id}">
+                        <span th:text="${role.roleName}"></span>
+                    </option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td>Name :</td>
             <td><input type="text" th:field="*{name}"/></td>
@@ -64,11 +75,24 @@
         </tr>
         <tr>
             <td>Birth Date :</td>
-            <td><input type="date" th:field="*{birthDate}" /></td>
+            <td><input type="date" th:field="*{birthDate}"/></td>
 
         </tr>
         <tr>
-            <td><button type="submit">Submit</button></td>
+            <td>Username :</td>
+            <td><input type="text" th:field="*{username}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</td>
+        </tr>
+        <tr>
+            <td>Password :</td>
+            <td><input type="password" th:field="*{password}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</td>
+
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
         </tr>
     </table>
 </form>

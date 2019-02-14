@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+
+<bean id="simpleServiceBean" class="com.sofiqul54.Employee">
+		<property name="name" value="Hello" />
+		<property name="id" value="12345" />
+	</bean>
+
+<bean id="doAroundMethodBean"
+		class="com.sofiqul54.DoAroundMethod" />
+
+	<bean id="simplePointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="sayHello" />
+	</bean>
+	<bean id="simpleAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="simplePointcut" />
+		<property name="advice" ref="doAroundMethodBean" />
+	</bean>
+
+	<bean id="simpleServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="simpleServiceBean" />
+		<property name="interceptorNames">
+			<list>
+				<value>simpleAdvisor</value> 
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+</head>
+<p>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/add}">Add User</a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/add-role}">Add Role</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+</nav>
+<h3 style="text-align: center"><b>User List</b></h3>
+<table class="table table-bordred table-striped">
+    <tr class="table-warning">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Roles</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+
+    </tr>
+    <tr th:each="u:${list}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.mobile}"></td>
+        <td>
+                    <span th:each="cc: ${u.roles}">
+                        <span th:text="${cc.rollName}"></span>
+                    </span>
+        </td>
+        <td><a th:href="@{'/edit/' + ${u.id}}">Update</a></td>
+        <td><a th:href="@{'/del/' + ${u.id}}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

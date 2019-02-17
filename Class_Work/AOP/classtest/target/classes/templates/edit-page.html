@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        .err {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<form th:object="${user}" th:action="@{/edit/}+${id}" th:method="POST">
+    <a th:href="@{/}">List</a>
+
+    <table>
+        <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
+
+        <tr>
+            <td>Roles :</td>
+            <td>
+                <select th:field="*{roles}" multiple>
+                    <option th:each="role : ${roleList}" th:value="${role.id}">
+                        <span th:text="${role.rollName}"></span>
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+
+        <tr>
+            <td>Mobile :</td>
+            <td><input type="text" th:field="*{mobile}"/></td>
+            <td th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Name Error</td>
+        </tr>
+
+
+        <tr>
+            <td><button type="submit">Update</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

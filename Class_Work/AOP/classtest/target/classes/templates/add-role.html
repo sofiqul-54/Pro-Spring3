@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<form th:object="${role}" th:action="@{/add-role}" method="post">
+    <span th:class="succes" th:text="${success}"></span>
+    <table>
+
+        </tr>
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" th:field="*{rollName}"/></td>
+            <td th:class="err" th:id="${#fields.hasErrors('rollName')}" th:errors="*{rollName}">Role Name Error</td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

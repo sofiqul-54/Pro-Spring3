@@ -1,0 +1,29 @@
+package com.sofiqul54.controller;
+
+import com.sofiqul54.entity.Role;
+import com.sofiqul54.repository.RoleRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class RoleController {
+    @Autowired
+    private RoleRepo repo;
+
+    @GetMapping (value = "/role-save")
+    private String saveRole(){
+        Role role1 = new Role();
+        role1.setRoleName("SUPERADMIN");
+        repo.save(role1);
+
+        Role role2 = new Role();
+        role2.setRoleName("ADMIN");
+        repo.save(role2);
+
+        Role role3 = new Role();
+        role3.setRoleName("USER");
+        repo.save(role3);
+        return "success";
+    }
+}

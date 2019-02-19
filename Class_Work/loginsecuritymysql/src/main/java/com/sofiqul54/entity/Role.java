@@ -1,6 +1,7 @@
 package com.sofiqul54.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
@@ -9,9 +10,11 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+   /* @NotEmpty*/
     private String roleName;
 
     public Role(Long id) {
+        this.id=id;
     }
 
     public Role() {

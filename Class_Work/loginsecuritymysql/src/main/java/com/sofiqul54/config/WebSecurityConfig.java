@@ -22,6 +22,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableJpaRepositories(basePackageClasses = com.sofiqul54.repository.UserRepo.class)
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@Autowired
+private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
 
    @Autowired
    CustomUserDetailsService customUserDetailsService;
@@ -48,8 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception{
     httpSecurity
             .authorizeRequests()
-            .antMatchers("/public/**", "/login", "/", "/role-save", "/user-save").permitAll()
-            .antMatchers("/sa/**").hasRole("SUPERADMIN")
+            .antMatchers("/public/**", "/login", "/", "/role-save", "/user-save" ).permitAll()
+            .antMatchers("/sa/**","/role/**").hasRole("SUPERADMIN")
             .antMatchers("/adm/**").hasRole("ADMIN")
             .antMatchers("/u/**").hasRole("USER")
             .antMatchers("/se/**").hasAnyRole("ADMIN", "USER", "SUPERADMIN")
@@ -65,7 +67,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .clearAuthentication(true)
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             .logoutSuccessUrl("/login?logout")
-            .permitAll();
+            .permitAll()
+            .and()
+            .exceptionHandling()
+            .accessDeniedHandler(loggingAccessDeniedHandler);
+
 
 }
 

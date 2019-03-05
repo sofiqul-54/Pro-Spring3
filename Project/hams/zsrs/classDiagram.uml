@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.sofiqul54.hams.entity</OriginalElement>
+  <nodes>
+    <node x="761.3068181818182" y="1797.0">com.sofiqul54.hams.entity.Exprnses</node>
+    <node x="1136.9375" y="0.0">com.sofiqul54.hams.entity.AgencyInfo</node>
+    <node x="480.0" y="176.0">com.sofiqul54.hams.entity.Ppackage</node>
+    <node x="882.9375" y="871.0">com.sofiqul54.hams.entity.AccountHead</node>
+    <node x="1237.9375" y="519.0">com.sofiqul54.hams.entity.User</node>
+    <node x="1368.9375" y="176.0">com.sofiqul54.hams.entity.Role</node>
+    <node x="469.0" y="1410.0">com.sofiqul54.hams.entity.VisaInfo</node>
+    <node x="335.125" y="563.0">com.sofiqul54.hams.entity.Pilgrim</node>
+    <node x="700.0" y="1410.0">com.sofiqul54.hams.entity.Income</node>
+    <node x="250.0" y="0.0">com.sofiqul54.hams.entity.Groupleader</node>
+    <node x="239.0" y="1432.0">com.sofiqul54.hams.entity.PassportInfo</node>
+    <node x="0.0" y="1410.0">com.sofiqul54.hams.entity.TicketFlightInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.sofiqul54.hams.entity.Income" target="com.sofiqul54.hams.entity.Pilgrim">
+      <point x="-37.625" y="-168.5" />
+      <point x="812.875" y="1360.0" />
+      <point x="567.625" y="1360.0" />
+      <point x="108.5" y="388.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.TicketFlightInfo" target="com.sofiqul54.hams.entity.Pilgrim">
+      <point x="54.75" y="-168.5" />
+      <point x="164.25" y="1370.0" />
+      <point x="381.625" y="1370.0" />
+      <point x="-77.5" y="388.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.PassportInfo" target="com.sofiqul54.hams.entity.Pilgrim">
+      <point x="-52.5" y="-146.5" />
+      <point x="291.5" y="1380.0" />
+      <point x="412.625" y="1380.0" />
+      <point x="-46.5" y="388.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.Income" target="com.sofiqul54.hams.entity.AccountHead">
+      <point x="112.875" y="-168.5" />
+      <point x="963.375" y="1390.0" />
+      <point x="961.3125" y="1390.0" />
+      <point x="-26.125" y="80.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.Pilgrim" target="com.sofiqul54.hams.entity.Groupleader">
+      <point x="-31.0" y="-388.5" />
+      <point x="428.125" y="538.0" />
+      <point x="407.5" y="538.0" />
+      <point x="52.5" y="256.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.VisaInfo" target="com.sofiqul54.hams.entity.Pilgrim">
+      <point x="52.75" y="-168.5" />
+      <point x="627.25" y="1380.0" />
+      <point x="505.625" y="1380.0" />
+      <point x="46.5" y="388.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.User" target="com.sofiqul54.hams.entity.AgencyInfo">
+      <point x="-30.0" y="-234.5" />
+      <point x="1327.9375" y="494.0" />
+      <point x="1295.9375" y="494.0" />
+      <point x="53.0" y="234.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.Pilgrim" target="com.sofiqul54.hams.entity.Ppackage">
+      <point x="93.0" y="-388.5" />
+      <point x="552.125" y="538.0" />
+      <point x="615.75" y="538.0" />
+      <point x="45.25" y="80.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.User" target="com.sofiqul54.hams.entity.Role">
+      <point x="90.0" y="-234.5" />
+      <point x="1447.9375" y="494.0" />
+      <point x="1521.9375" y="494.0" />
+      <point x="51.0" y="58.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.Exprnses" target="com.sofiqul54.hams.entity.Income">
+      <point x="-112.87500000000011" y="-168.5" />
+      <point x="798.9318181818181" y="1772.0" />
+      <point x="775.25" y="1772.0" />
+      <point x="-75.25" y="168.5" />
+    </edge>
+    <edge source="com.sofiqul54.hams.entity.Exprnses" target="com.sofiqul54.hams.entity.AccountHead">
+      <point x="112.87499999999989" y="-168.5" />
+      <point x="1024.681818181818" y="1772.0" />
+      <point x="1022.5" y="1772.0" />
+      <point x="1022.5" y="1390.0" />
+      <point x="1065.8125" y="1390.0" />
+      <point x="78.375" y="80.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="590.5" y="1888.5" />
+  <SelectedNodes>
+    <node>com.sofiqul54.hams.entity.Role</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

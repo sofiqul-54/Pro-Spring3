@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
-@EnableJpaRepositories(basePackageClasses = com.sofiqul54.repo.UserRepo.class)
+@EnableJpaRepositories(basePackageClasses = com.coderbd.repo.UserRepo.class)
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

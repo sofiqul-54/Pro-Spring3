@@ -1,8 +1,12 @@
 package com.sofiqul54.entity;
 
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,11 +21,38 @@ public class User {
     private String userName;
     @Column(nullable = true)
     private String password;
+
+
+    private String mobile;
+
     @Email
     @NotEmpty(message = "Enter An Email")
     private String email;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date regiDate;
+
+    @LastModifiedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date lastModifiedDate=new Date();
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthDate;
+
+    @NotEmpty(message = "Enter Gender")
+    private String gender;
     private boolean status;
     private String confirmationToken;
+
+    //////File Upload==============
+    private long fileSize;
+    private String fileName;
+    //  @Lob
+    // private byte[] file;
+    private String filePath;
+    private String fileExtension;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

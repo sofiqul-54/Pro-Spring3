@@ -1954,7 +1954,7 @@ p.grid1 {
 .signup-block {
     padding: 4em 2em;
 }
-.signup-block input[type="text"], .signup-block input[type="password"] {
+.signup-block input[type="text"], .signup-block input[type="password"],.signup-block input[type="email"],.signup-block input[type="date"] {
     font-size: 0.9em;
     padding: 10px 20px;
     width: 100%;

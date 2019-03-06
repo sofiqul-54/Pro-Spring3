@@ -27,23 +27,35 @@
 				<h1>Sign Up</h1>
 			</div>
 			<div class="signup-block">
-				<form>
-					<input type="text" name="email" placeholder="Name" required="">
-					<input type="text" name="email" placeholder="Email" required="">
-					<input type="password" name="password" class="lock" placeholder="Password">
+				<span th:class="succes" th:text="${successMsg}"></span>
+				<span th:class="err" th:text="${rejectMsg}"></span>
+				<form th:object="${user}" th:action="@{/sign-up}" th:method="POST">
+					<input type="text"  th:field="*{firstName}" placeholder="Enter First Name" required="true">
+					<input type="text"  th:field="*{lastName}" placeholder="Enter Last Name" required="true">
+					<input type="email"  th:field="*{email}" placeholder="Enter Email" required="true">
+					<input type="date" th:text="${#dates.format(user.birthDate, 'yyyy-MM-dd')}" th:field="*{birthDate}"  class="fa-calendar" placeholder="Enter Birth Date">
+
 					<div class="forgot-top-grids">
 						<div class="forgot-grid">
 							<ul>
 								<li>
-									<input type="checkbox" id="brand1" value="">
-									<label for="brand1"><span></span>I agree to the terms</label>
+									<input type="radio" id="m" name="gender" value="m" th:field="*{gender}">
+									<label for="m"><span></span>Male</label>
 								</li>
+                                <li>
+                                    <input type="radio" id="f" name="gender" value="f" th:field="*{gender}">
+                                    <label for="f"><span></span>Female</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="o" name="gender" value="o" th:field="*{gender}">
+                                    <label for="o"><span></span>Other</label>
+                                </li>
 							</ul>
 						</div>
 						
 						<div class="clearfix"> </div>
 					</div>
-					<input type="submit" name="Sign In" value="Register">
+					<input type="submit" value="Sign Up">
 				</form>
 				<div class="sign-down">
 				<h4>Already have an account? <a th:href="@{/login}"> Login here.</a></h4>

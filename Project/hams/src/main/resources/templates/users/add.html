@@ -11,12 +11,46 @@
               <h1>Add Role</h1>
                 <span th:class="succes" th:text="${successMsg}"></span>
                 <span th:class="err" th:text="${rejectMsg}"></span>
-                <form th:object="${role}" th:action="@{/role/add}" th:method="POST">
+                <form th:object="${user}" th:action="@{/role/add}" th:method="POST">
 
                     <div class="form-group">
-                        <label for="rolename">Role Name:</label>
-                        <input type="text" th:field="*{roleName}" class="form-control" id="rolename">
-                        <span th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Rolename Error</span>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" th:field="*{firstName}" class="form-control" id="firstName">
+                        <span th:class="err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error</span>
+
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" th:field="*{lastName}" class="form-control" id="lastName">
+                        <span th:class="err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName Error</span>
+
+                        <label for="userName">Username:</label>
+                        <input type="text" th:field="*{userName}" class="form-control" id="userName">
+                        <span th:class="err" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">UserName Error</span>
+
+                        <label for="password">Password:</label>
+                        <input type="password" th:field="*{userName}" class="form-control" id="password">
+                        <span th:class="err" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+
+                        <label for="email">Email:</label>
+                        <input type="text" th:field="*{email}" class="form-control" id="email">
+                        <span th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+
+                        <label for="mobile">Mobile:</label>
+                        <input type="number" th:field="*{mobile}" class="form-control" id="mobile">
+                        <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
+
+                        <label for="gender">Gender:</label>
+                        <input type="number" th:field="*{mobile}" class="form-control" id="gender">
+                        <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
+
+                        <label for="birthDate">Birthdate:</label>
+                        <input type="date" th:field="*{birthDate}" class="form-control" id="birthDate">
+                        <span th:class="err" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Birthdate Error</span>
+
+                        <label for="photo">Photo:</label>
+                        <input type="file" th:field="*{setFileName(getFileName())}" class="form-control" id="photo">
+                        <span th:class="err" th:if="${#fields.hasErrors('photo')}" th:errors="*{mobile}">Mobile Error</span>
+
+
                     </div>
 
                     <button type="submit" class="btn btn-primary">Add</button>

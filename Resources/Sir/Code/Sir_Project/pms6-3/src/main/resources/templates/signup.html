@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registration :: PMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="PMS" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all">
+<!-- Custom Theme files -->
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+<!--js-->
+<script th:src="@{/js/jquery-2.1.1.min.js}"></script>
+<!--icons-css-->
+<link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+<!--Google Fonts-->
+<link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
+<!--//charts-->
+</head>
+<body>	
+<!--inner block start here-->
+<div class="signup-page-main">
+     <div class="signup-main">  	
+    	 <div class="signup-head">
+				<h1>Sign Up</h1>
+			</div>
+			<div class="signup-block">
+				<span th:class="succes" th:text="${successMsg}"></span>
+				<span th:class="err" th:text="${rejectMsg}"></span>
+				<form th:object="${user}" th:action="@{/sign-up}" th:method="POST">
+					<input type="text"  th:field="*{firstName}" placeholder="Enter First Name" required="true">
+					<input type="text"  th:field="*{lastName}" placeholder="Enter Last Name" required="true">
+					<input type="email"  th:field="*{email}" placeholder="Enter Email" required="true">
+					<input type="date" th:text="${#dates.format(user.birthDate, 'yyyy-MM-dd')}" th:field="*{birthDate}"  class="fa-calendar" placeholder="Enter Birth Date">
+
+					<div class="forgot-top-grids">
+						<div class="forgot-grid">
+							<ul>
+								<li>
+									<input type="radio" id="m" name="gender" value="m" th:field="*{gender}">
+									<label for="m"><span></span>Male</label>
+								</li>
+                                <li>
+                                    <input type="radio" id="f" name="gender" value="f" th:field="*{gender}">
+                                    <label for="f"><span></span>Female</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="o" name="gender" value="o" th:field="*{gender}">
+                                    <label for="o"><span></span>Other</label>
+                                </li>
+							</ul>
+						</div>
+						
+						<div class="clearfix"> </div>
+					</div>
+					<input type="submit" value="Sign Up">
+				</form>
+				<div class="sign-down">
+				<h4>Already have an account? <a th:href="@{/login}"> Login here.</a></h4>
+				  <h5><a href="index.html">Go Back to Home</a></h5>
+				</div>
+			</div>
+    </div>
+</div>
+<!--inner block end here-->
+<!--copy rights start here-->
+<div th:replace="~{fragments/footer.html :: copyright}"></div>
+<!--COPY rights end here-->
+<!--scrolling js-->
+		<script th:src="@{/js/jquery.nicescroll.js}"></script>
+		<script th:src="@{/js/scripts.js}"></script>
+		<!--//scrolling js-->
+<script th:src="@{/js/bootstrap.js}"> </script>
+<!-- mother grid end here-->
+</body>
+</html>
+
+
+                      
+						

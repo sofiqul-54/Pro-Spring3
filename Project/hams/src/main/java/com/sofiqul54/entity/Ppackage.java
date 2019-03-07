@@ -1,6 +1,7 @@
 package com.sofiqul54.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "package")
@@ -12,6 +13,14 @@ public class Ppackage {
     private String name;
     @Column(name = "package_value", nullable = false)
     private double price;
+
+    public Ppackage() {
+    }
+
+    public Ppackage(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -37,5 +46,18 @@ public class Ppackage {
         this.price = price;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ppackage ppackage = (Ppackage) o;
+        return Double.compare(ppackage.price, price) == 0 &&
+                Objects.equals(id, ppackage.id) &&
+                Objects.equals(name, ppackage.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
+    }
 }

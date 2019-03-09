@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,7 +24,6 @@ import java.util.UUID;
 public class UserController {
     @Autowired
     private UserRepo repo;
-
 
     @Autowired
     private RoleRepo roleRepo;
@@ -34,31 +34,37 @@ public class UserController {
     @GetMapping(value = "add")
     public String viewAdd(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "users/add";
     }
 
     @PostMapping(value = "add")
-    public String add(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "users/add";
-        }
-        if (repo.existsByEmail(user.getEmail())) {
-            model.addAttribute("rejectMsg", "Already Have This Entry");
+    public String userSave(@Valid User user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("rolelist", this.roleRepo.findAll());
+            return "user/add";
         } else {
-            String username = user.getEmail().split("\\@")[0];
-            user.setUserName(username);
-            user.setEnabled(true);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setConfirmationToken(UUID.randomUUID().toString());
-            this.repo.save(user);
-            model.addAttribute("successMsg", "Successfully Saved!");
+            if (user != null) {
+                User user1 = this.repo.findByUserName(user.getUserName());
+                if (user1 != null) {
+                    model.addAttribute("rejectMsg", "UserName allready exist");
+                } else {
+                    user.setPassword(passwordEncoder.encode(user.getPassword()));
+                    this.repo.save(user);
+                    model.addAttribute("user", new User());
+                    model.addAttribute("successMsg", "Congratulations! Data save sucessfully");
+                }
+            }
         }
-        return "users/add";
+        model.addAttribute("rolelist", this.roleRepo.findAll());
+        return "user/add";
     }
+
 
     @GetMapping(value = "edit/{id}")
     public String viewEdit(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", repo.getOne(id));
+        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "users/edit";
     }
 
@@ -75,6 +81,7 @@ public class UserController {
             user.setId(id);
             this.repo.save(user);
         }
+        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "redirect:/user/list";
     }
 

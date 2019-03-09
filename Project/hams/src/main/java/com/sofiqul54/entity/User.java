@@ -29,7 +29,7 @@ public class User {
     @Column(nullable = false, name = "user_name", unique = true)
     private String userName;
 
-    @Column(nullable = true)
+    @Column/*(nullable = true)*/
     private String password;
 
     @NotEmpty
@@ -59,17 +59,17 @@ public class User {
 
     //////Token Activation ==============
     private boolean enabled;
-    @Column(nullable = false)
+    @Column/*(nullable = false)*/
     private String confirmationToken;
 
     //////File Upload==============
-    @Column(nullable = true)
+   /* @Column(nullable = true)
     private long fileSize;
-    private String fileName;
+    private String fileName;*/
     //  @Lob
     // private byte[] file;
-    private String filePath;
-    private String fileExtension;
+   /* private String filePath;
+    private String fileExtension;*/
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -105,10 +105,10 @@ public class User {
         this.birthDate = user.birthDate;
         this.enabled = user.enabled;
         this.confirmationToken = user.confirmationToken;
-        this.fileSize = user.fileSize;
+       /* this.fileSize = user.fileSize;
         this.fileName = user.fileName;
         this.filePath = user.filePath;
-        this.fileExtension = user.fileExtension;
+        this.fileExtension = user.fileExtension;*/
         this.roles = user.roles;
     }
 
@@ -216,7 +216,7 @@ public class User {
         this.confirmationToken = confirmationToken;
     }
 
-    public long getFileSize() {
+   /* public long getFileSize() {
         return fileSize;
     }
 
@@ -247,7 +247,7 @@ public class User {
     public void setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
     }
-
+*/
     public Set<Role> getRoles() {
         return roles;
     }
@@ -262,7 +262,7 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return isEnabled() == user.isEnabled() &&
-                getFileSize() == user.getFileSize() &&
+              /*  getFileSize() == user.getFileSize() &&*/
                 Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getFirstName(), user.getFirstName()) &&
                 Objects.equals(getLastName(), user.getLastName()) &&
@@ -275,16 +275,16 @@ public class User {
                 Objects.equals(getLastModifiedDate(), user.getLastModifiedDate()) &&
                 Objects.equals(getBirthDate(), user.getBirthDate()) &&
                 Objects.equals(getConfirmationToken(), user.getConfirmationToken()) &&
-                Objects.equals(getFileName(), user.getFileName()) &&
+               /* Objects.equals(getFileName(), user.getFileName()) &&
                 Objects.equals(getFilePath(), user.getFilePath()) &&
                 Objects.equals(getFileExtension(), user.getFileExtension()) &&
-                Objects.equals(getRoles(), user.getRoles());
+            */    Objects.equals(getRoles(), user.getRoles());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getEmail(), getMobile(), getGender(), getRegiDate(), getLastModifiedDate(), getBirthDate(), isEnabled(), getConfirmationToken(), getFileSize(), getFileName(), getFilePath(), getFileExtension(), getRoles());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getEmail(), getMobile(), getGender(), getRegiDate(), getLastModifiedDate(), getBirthDate(), isEnabled(), getConfirmationToken(),/* getFileSize(), getFileName(), getFilePath(), getFileExtension(),*/ getRoles());
     }
 }
 

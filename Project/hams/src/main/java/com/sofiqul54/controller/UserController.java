@@ -23,6 +23,9 @@ import java.util.UUID;
 @RequestMapping(value = "/user/")
 public class UserController {
     @Autowired
+    private ImageOptimizer imageOptimizer;
+
+    @Autowired
     private UserRepo repo;
 
     @Autowired
@@ -41,15 +44,17 @@ public class UserController {
     @PostMapping(value = "add")
     public String userSave(@Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("rolelist", this.roleRepo.findAll());
-            return "user/add";
+            return "users/add";
         } else {
-            if (user != null) {
-                User user1 = this.repo.findByUserName(user.getUserName());
-                if (user1 != null) {
+            if (user.getEmail() != null) {
+
+                if (repo.existsByEmail(user.getEmail())) {
                     model.addAttribute("rejectMsg", "UserName allready exist");
                 } else {
                     user.setPassword(passwordEncoder.encode(user.getPassword()));
+                    user.setRegiDate(new Date());
+                    user.setEnabled(true);
+                    user.setConfirmationToken(UUID.randomUUID().toString());
                     this.repo.save(user);
                     model.addAttribute("user", new User());
                     model.addAttribute("successMsg", "Congratulations! Data save sucessfully");
@@ -57,7 +62,7 @@ public class UserController {
             }
         }
         model.addAttribute("rolelist", this.roleRepo.findAll());
-        return "user/add";
+        return "users/add";
     }
 
 
@@ -78,10 +83,14 @@ public class UserController {
             model.addAttribute("rejectMsg", "Already Have This Entry");
             return "users/edit";
         } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRegiDate(new Date());
+            user.setEnabled(true);
+            user.setConfirmationToken(UUID.randomUUID().toString());
             user.setId(id);
             this.repo.save(user);
+            model.addAttribute("rolelist", this.roleRepo.findAll());
         }
-        model.addAttribute("rolelist", this.roleRepo.findAll());
         return "redirect:/user/list";
     }
 

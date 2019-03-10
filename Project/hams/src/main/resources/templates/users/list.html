@@ -21,6 +21,8 @@
                         <th>Mobile</th>
                         <th>Gender</th>
                         <th>Birthdate</th>
+                        <th>Reg. Date</th>
+                        <th>L M Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
 
@@ -29,13 +31,20 @@
                     <tbody>
                     <tr th:each="user : ${list}">
                         <td th:text="${user.id}"></td>
+                        <td>
+                       <span th:each="r : ${user.roles}">
+                           <span th:text="${r.roleName}"></span>
+                       </span>
+
+                        </td>
                        <td th:text="${user.firstName}"></td>
-                        <td th:text="${user.lastName}"></td>
                         <td th:text="${user.userName}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.mobile}"></td>
                         <td th:text="${user.gender}"></td>
                         <td th:text="${user.birthDate}"></td>
+                        <td th:text="${user.regiDate}"></td>
+                        <td th:text="${user.lastModifiedDate}"></td>
 
                         <td>
                             <a th:href="@{'/user/edit/'+${user.id}}">Edit</a>
@@ -50,8 +59,16 @@
                     <tr>
                         <th>SL. No</th>
                         <th>Role Name</th>
+                        <th>First Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Gender</th>
+                        <th>Birthdate</th>
+                        <th>Reg. Date</th>
+                        <th>L M Date</th>
                         <th>Edit</th>
-                        <th>Del</th>
+                        <th>Delete</th>
                     </tr>
                     </tfoot>
                 </table>

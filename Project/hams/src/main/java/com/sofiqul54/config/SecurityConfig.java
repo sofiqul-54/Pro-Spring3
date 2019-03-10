@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/css/**","/fonts/**","/images/**","/js/**","/user-save","/404/**","/login","/sign-up","/confirm/**","/role-save"
                 ).permitAll()
-                .antMatchers("/role/**", "/user/**").hasRole("SUPERADMIN")
+                .antMatchers("/role/**", "/agninfo/**").hasRole("SUPERADMIN")
                 .antMatchers(
                        "/company/**"
                         ).hasAnyRole("CADMIN","PM","TEAMLEAD","DEVELOPER")
@@ -60,8 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "SUPERADMIN")
                 .antMatchers("/admin/**").hasRole(
                 "ADMIN")
-                /*.antMatchers("/user/**").hasRole(
-                "USER")*/
+                .antMatchers("/user/**").hasAnyRole("SUPERADMIN", "USER")
                 .anyRequest()
                 .authenticated()
                 .and()

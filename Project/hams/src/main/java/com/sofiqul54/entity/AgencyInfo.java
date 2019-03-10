@@ -1,10 +1,12 @@
 package com.sofiqul54.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
-@Table(name = "agency")
 public class AgencyInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +25,11 @@ public class AgencyInfo {
     @Column(nullable = false, unique = true)
     private String email;
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date openingDate;
+
+    public AgencyInfo() {
+    }
 
     public Long getId() {
         return id;
@@ -103,5 +109,27 @@ public class AgencyInfo {
 
     public void setOpeningDate(Date openingDate) {
         this.openingDate = openingDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AgencyInfo that = (AgencyInfo) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(agnName, that.agnName) &&
+                Objects.equals(proName, that.proName) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(mobile, that.mobile) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(fax, that.fax) &&
+                Objects.equals(webSite, that.webSite) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(openingDate, that.openingDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, agnName, proName, address, mobile, phone, fax, webSite, email, openingDate);
     }
 }

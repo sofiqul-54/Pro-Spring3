@@ -39,7 +39,7 @@
             <span th:class="err" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">UserName Error</span>
 
             <label for="password">Password:</label>
-            <input type="password" th:field="*{userName}" class="form-control" id="password">
+            <input type="password" th:field="*{password}" class="form-control" id="password">
             <span th:class="err" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
 
             <label for="email">Email:</label>
@@ -50,11 +50,14 @@
             <input type="number" th:field="*{mobile}" class="form-control" id="mobile">
             <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
 
-            <label for="gender">Gender:</label>
-            Male <input type="radio" value="mail" th:field="*{gender}" id="gender"/>
-            Femail <input type="radio" value="femail" th:field="*{gender}" id="gende"/>
-            <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
+            <label>Gender:</label>
+                    <input type="radio" id="m" name="gender" value="Male" th:field="*{gender}">
+                    <label for="m"><span></span>Male</label>
 
+                    <input type="radio" id="f" name="gender" value="Female" th:field="*{gender}">
+                    <label for="f"><span></span>Female</label>
+            <span th:class="err" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Gender Error</span>
+<br>
             <label for="birthDate">Birthdate:</label>
             <input type="date" th:field="*{birthDate}" class="form-control" id="birthDate">
             <span th:class="err" th:if="${#fields.hasErrors('birthDate')}"

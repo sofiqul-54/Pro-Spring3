@@ -44,7 +44,7 @@
       <form th:if="!${invalidToken}" class="m-t" id="passwordForm" role="form" action="#"
        th:object="${setPassword}" th:action="@{/confirm}" method="post">
 
-        <input type="hidden" name="token" th:value=${confirmationToken}  >
+        <input type="hidden" name="token" th:value=${confirmationToken}>
 
         <div class="form-group input-group">
           <span class="input-group-addon">

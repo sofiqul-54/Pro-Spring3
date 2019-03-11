@@ -39,7 +39,30 @@
 <script src="./dist/js/vendor.js" th:src="@{/./dist/js/vendor.js}"></script>
 <script src="./dist/js/adminx.js" th:src="@{/./dist/js/adminx.js}"></script>
 
-<script src="./dist/js/vendor.js" th:src="@{/./dist/js/vendor.js}"></script>
-<script src="./dist/js/adminx.vanilla.js" th:src="@{/./dist/js/adminx.vanilla.js}"></script>
+<!--//////////Data Tables///////////////-->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" th:src="@{/https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js}"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" th:src="@{/https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js}"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('[data-table]').DataTable({
+            "columns": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "orderable": false }
+            ]
+        });
+
+        /* $('.form-control-search').keyup(function(){
+          table.search($(this).val()).draw() ;
+        }); */
+    });
+</script>
+
+
+<script src="./dist/js/vendor.js" th:src="@{./dist/js/vendor.js}"></script>
+<script src="./dist/js/adminx.vanilla.js" th:src="@{./dist/js/adminx.vanilla.js}"></script>
 </body>
 </html>

@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface PackageRepo extends JpaRepository<Ppackage, Long> {
     Optional<Ppackage> findByName(String name);
-    boolean existsByName(String name);
+    boolean existsByName(String roleName);
 }

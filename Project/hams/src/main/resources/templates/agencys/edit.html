@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<!--inner block start here-->
+<div class="inner-block min-height" layout:fragment="custom-content">
+    <h1>Add Agency</h1>
+    <span th:class="succes" th:text="${successMsg}"></span>
+    <span th:class="err" th:text="${rejectMsg}"></span>
+    <form th:object="${agency}" th:action="@{/agninfo/add}" th:method="POST">
+
+        <div class="form-group">
+           <br> <label for="agnName">Agency Name:</label>
+            <input type="text" th:field="*{agnName}" class="form-control" id="agnName">
+            <span th:class="err" th:if="${#fields.hasErrors('agnName')}"th:errors="*{agnName}">AgencyName Error</span>
+
+            <label for="proName">Propritor Name:</label>
+            <input type="text" th:field="*{proName}" class="form-control" id="proName">
+            <span th:class="err" th:if="${#fields.hasErrors('proName')}" th:errors="*{proName}">Propritor Error</span>
+
+            <label for="address">Address:</label>
+            <input type="text" th:field="*{address}" class="form-control" id="address">
+            <span th:class="err" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</span>
+
+            <label for="mobile">Mobile:</label>
+            <input type="number" th:field="*{mobile}" class="form-control" id="mobile">
+            <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
+
+            <label for="phone">Phone:</label>
+            <input type="number" th:field="*{phone}" class="form-control" id="phone">
+            <span th:class="err" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</span>
+
+            <label for="fax">Fax:</label>
+            <input type="number" th:field="*{fax}" class="form-control" id="fax">
+            <span th:class="err" th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}">Fax Error</span>
+
+            <label for="webSite">Website:</label>
+            <input type="text" th:field="*{webSite}" class="form-control" id="webSite">
+            <span th:class="err" th:if="${#fields.hasErrors('webSite')}" th:errors="*{webSite}">Website Error</span>
+
+            <label for="email">Email:</label>
+            <input type="text" th:field="*{email}" class="form-control" id="email">
+            <span th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+
+           <!-- <label for="openingDate">Opening Date:</label>
+            <input type="date" th:field="*{openingDate}" class="form-control" id="openingDate">
+            <span th:class="err" th:if="${#fields.hasErrors('openingDate')}"
+                  th:errors="*{openingDate}">OpeningDate Error</span>-->
+
+            <!-- <label for="photo">Photo:</label>
+             <input type="file" th:field="*{setFileName(getFileName())}" class="form-control" id="photo">
+             <span th:class="err" th:if="${#fields.hasErrors('photo')}" th:errors="*{mobile}">Mobile Error</span>
+-->
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+</div>
+<!--inner block end here-->
+</body>
+</html>

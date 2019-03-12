@@ -39,7 +39,7 @@
 
             <ul class="sidebar-sub-nav collapse" id="example">
                 <li class="sidebar-nav-item">
-                    <a href="./layouts/tables.html" class="sidebar-nav-link">
+                    <a th:href="@{/role/add}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     AD
                   </span>
@@ -50,12 +50,50 @@
                 </li>
 
                 <li class="sidebar-nav-item">
-                    <a href="#" class="sidebar-nav-link">
+                    <a th:href="@{/role/list}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     RL
                   </span>
                         <span class="sidebar-nav-name">
                     Role List
+                  </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-nav-item">
+            <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#use" aria-expanded="false" aria-controls="use">
+              <span class="sidebar-nav-icon">
+                <i data-feather="pie-chart"></i>
+              </span>
+                <span class="sidebar-nav-name">
+                Users
+              </span>
+                <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
+            </a>
+
+            <ul class="sidebar-sub-nav collapse" id="use">
+                <li class="sidebar-nav-item">
+                    <a th:href="@{/user/add}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    AU
+                  </span>
+                        <span class="sidebar-nav-name">
+                    Add User
+                  </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a th:href="@{/user/list}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    UL
+                  </span>
+                        <span class="sidebar-nav-name">
+                    User List
                   </span>
                     </a>
                 </li>

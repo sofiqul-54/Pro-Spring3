@@ -378,7 +378,7 @@
         // Set chartPackage - Default: corechart - The Google Chart Package to load.
         o.chartPackage = 'corechart';
 
-        // Array of chart types included in the Google Charts corechart package
+        // Array of chart types included in the Google Charts corechart packages
         o.coreCharts = ['BarChart','ColumnChart','PieChart','AreaChart','BubbleChart','CandlestickChart','ComboChart','Histogram', 'LineChart', 'ScatterChart', 'SteppedAreaChart'];
 
         // Init chart parent
@@ -499,10 +499,10 @@
                 return;
             }
 
-            // Set chart package
+            // Set chart packages
             if ( o.coreCharts.indexOf(o.options.chartType) === -1 ) { // not a core chart
 
-                // Get chart package from chart type
+                // Get chart packages from chart type
                 o.chartPackage = o.options.chartType.toLowerCase();
             }
 

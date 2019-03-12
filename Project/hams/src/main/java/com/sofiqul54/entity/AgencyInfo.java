@@ -3,6 +3,8 @@ package com.sofiqul54.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.Objects;
 
@@ -11,19 +13,31 @@ public class AgencyInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+
+    @Column(nullable = false)
     private String agnName;
+
     @Column(nullable = false)
     private String proName;
+
     @Column(nullable = false)
     private String address;
+
     @Column(nullable = false)
     private String mobile;
+
     private String phone;
+
     private String fax;
+
     private String webSite;
+
+    @NotEmpty
+    @Email
+    @NotEmpty(message = "Enter An Email")
     @Column(nullable = false, unique = true)
     private String email;
+
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date openingDate;

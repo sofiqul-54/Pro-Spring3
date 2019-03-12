@@ -8,13 +8,18 @@
 <body>
 <!--inner block start here-->
 <div class="inner-block min-height" layout:fragment="custom-content">
-    <h1>Add Agency</h1>
-    <span th:class="succes" th:text="${successMsg}"></span>
+    <h1>Edit Agency</h1>
     <span th:class="err" th:text="${rejectMsg}"></span>
-    <form th:object="${agency}" th:action="@{/agninfo/add}" th:method="POST">
+    <form th:object="${agency}" th:action="@{/agninfo/edit/}+${id}" th:method="POST">
 
         <div class="form-group">
-           <br> <label for="agnName">Agency Name:</label>
+           <br>
+            <label for="id">Agency Id:</label>
+            <input type="text" th:field="*{id}" class="form-control" id="id">
+            <span th:class="err" th:if="${#fields.hasErrors('id')}"th:errors="*{id}">AgencyId Error</span>
+
+
+            <label for="agnName">Agency Name:</label>
             <input type="text" th:field="*{agnName}" class="form-control" id="agnName">
             <span th:class="err" th:if="${#fields.hasErrors('agnName')}"th:errors="*{agnName}">AgencyName Error</span>
 

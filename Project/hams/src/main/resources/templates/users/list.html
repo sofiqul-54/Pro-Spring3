@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -50,7 +50,7 @@
                             <a th:href="@{'/user/edit/'+${user.id}}">Edit</a>
                         </td>
                         <td>
-                            <a th:href="@{'/user/del/'+${user.id}}">Del</a>
+                            <a th:href="@{'/user/del/'+${user.id}}">Delete</a>
                         </td>
                     </tr>
 

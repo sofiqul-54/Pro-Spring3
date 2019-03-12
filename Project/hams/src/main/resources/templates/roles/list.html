@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Role List</title>
 
 </head>
 <body>
@@ -28,7 +28,7 @@
                             <a th:href="@{'/role/edit/'+${role.id}}">Edit</a>
                         </td>
                         <td>
-                            <a th:href="@{'/role/del/'+${role.id}}">Del</a>
+                            <a th:href="@{'/role/del/'+${role.id}}">Delete</a>
                         </td>
                     </tr>
 

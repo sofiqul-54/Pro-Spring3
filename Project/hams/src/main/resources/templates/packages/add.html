@@ -14,9 +14,13 @@
                 <form th:object="${package}" th:action="@{/package/add}" th:method="POST">
 
                     <div class="form-group">
-                        <label for="rolename">Role Name:</label>
-                        <input type="text" th:field="*{roleName}" class="form-control" id="rolename">
-                        <span th:class="err" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}">Rolename Error</span>
+                        <label for="name">Package Name:</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name">
+                        <span th:class="err" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">PackageName Error</span>
+
+                        <label for="price">Package Value:</label>
+                        <input type="number" th:field="*{price}" class="form-control" id="price">
+                        <span th:class="err" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">PackageValue Error</span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Add</button>

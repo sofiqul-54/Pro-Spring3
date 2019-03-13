@@ -47,13 +47,12 @@ public class LoginController {
     private static String USER_NAME = "sofiqulj2ee";
     private static String PASSWORD = "Asdf@1234";
 
-    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-    public String login() {
+    @RequestMapping(value ="/login", method = RequestMethod.GET)
+    public String login(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
-            /* The user is logged in :) */
+        if(!(auth instanceof AnonymousAuthenticationToken)){
             return "redirect:/";
+
         }
         return "login";
     }
@@ -85,7 +84,7 @@ public class LoginController {
 
             this.repo.save(user);
             //email sending
-            String appUrl = request.getScheme() + "://" + request.getServerName()+":"+"8008";
+            String appUrl = request.getScheme() + "://" + request.getServerName()+":"+"8080";
             String from = USER_NAME;
             String pass = PASSWORD;
             String[] to = {user.getEmail()}; // list of recipient email addresses

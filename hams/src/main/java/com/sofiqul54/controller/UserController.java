@@ -1,6 +1,6 @@
 package com.sofiqul54.controller;
 
-import com.sofiqul54.entity.Role;
+
 import com.sofiqul54.entity.User;
 import com.sofiqul54.repo.RoleRepo;
 import com.sofiqul54.repo.UserRepo;

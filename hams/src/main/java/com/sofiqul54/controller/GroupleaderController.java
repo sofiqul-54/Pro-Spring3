@@ -1,12 +1,8 @@
 package com.sofiqul54.controller;
 
 import com.sofiqul54.entity.Groupleader;
-import com.sofiqul54.entity.User;
 import com.sofiqul54.repo.GroupleaderRepo;
-import com.sofiqul54.repo.RoleRepo;
-import com.sofiqul54.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -92,6 +88,6 @@ public class GroupleaderController {
     @GetMapping(value = "list")
     public String list(Model model) {
         model.addAttribute("list", this.repo.findAll());
-        return "groupleader/list";
+        return "groupleaders/list";
     }
 }

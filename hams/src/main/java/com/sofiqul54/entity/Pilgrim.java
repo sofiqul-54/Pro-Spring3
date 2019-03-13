@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,8 +17,9 @@ public class Pilgrim {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private long accountNumber;
+    private String pilgrimNumber;
 
+    @Size(min = 2,max = 50,message = "Hey, Size must be between 2 and 50")
     @Column(nullable = false)
     private String name;
 
@@ -47,56 +49,38 @@ public class Pilgrim {
     @Column(nullable = false)
     private String nid;
 
-    @Column(nullable = false)
+    private String email;
+
     private String maritalStatus;//check or radio status
 
-    @Column(nullable = false)
+
     private String spouseName;
 
-    @Column(nullable = false)
+
     private String occupation;
 
-    @Column(nullable = false)
+
     private String address;
 
     @Column(nullable = false)
     private String district; // dropdown hobe
 
     private double bookingAmount;
-    private double balanceAmount;
+    private double tolalAmount;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pk_id", nullable = false)
     private Ppackage ppackage;//dropdown hobe
 
-    @ManyToOne
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gl_id", nullable = false)
     private Groupleader groupleader; //dropdown hobe
 
 
     public Pilgrim() {
-    }
-
-    public Pilgrim(long accountNumber, String name, String fatherName, String motherName, String gender, Date regiDate, Date lastModifiedDate, Date birthDate, String nid, String maritalStatus, String spouseName, String occupation, String address, String district, double bookingAmount, double balanceAmount, Ppackage ppackage, Groupleader groupleader) {
-        this.accountNumber = accountNumber;
-        this.name = name;
-        this.fatherName = fatherName;
-        this.motherName = motherName;
-        this.gender = gender;
-        this.regiDate = regiDate;
-        this.lastModifiedDate = lastModifiedDate;
-        this.birthDate = birthDate;
-        this.nid = nid;
-        this.maritalStatus = maritalStatus;
-        this.spouseName = spouseName;
-        this.occupation = occupation;
-        this.address = address;
-        this.district = district;
-        this.bookingAmount = bookingAmount;
-        this.balanceAmount = balanceAmount;
-        this.ppackage = ppackage;
-        this.groupleader = groupleader;
     }
 
     public Long getId() {
@@ -107,12 +91,12 @@ public class Pilgrim {
         this.id = id;
     }
 
-    public long getAccountNumber() {
-        return accountNumber;
+    public String getPilgrimNumber() {
+        return pilgrimNumber;
     }
 
-    public void setAccountNumber(long accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setPilgrimNumber(String pilgrimNumber) {
+        this.pilgrimNumber = pilgrimNumber;
     }
 
     public String getName() {
@@ -179,6 +163,14 @@ public class Pilgrim {
         this.nid = nid;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getMaritalStatus() {
         return maritalStatus;
     }
@@ -227,12 +219,12 @@ public class Pilgrim {
         this.bookingAmount = bookingAmount;
     }
 
-    public double getBalanceAmount() {
-        return balanceAmount;
+    public double getTolalAmount() {
+        return tolalAmount;
     }
 
-    public void setBalanceAmount(double balanceAmount) {
-        this.balanceAmount = balanceAmount;
+    public void setTolalAmount(double tolalAmount) {
+        this.tolalAmount = tolalAmount;
     }
 
     public Ppackage getPpackage() {
@@ -256,10 +248,10 @@ public class Pilgrim {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pilgrim pilgrim = (Pilgrim) o;
-        return accountNumber == pilgrim.accountNumber &&
-                Double.compare(pilgrim.bookingAmount, bookingAmount) == 0 &&
-                Double.compare(pilgrim.balanceAmount, balanceAmount) == 0 &&
+        return Double.compare(pilgrim.bookingAmount, bookingAmount) == 0 &&
+                Double.compare(pilgrim.tolalAmount, tolalAmount) == 0 &&
                 Objects.equals(id, pilgrim.id) &&
+                Objects.equals(pilgrimNumber, pilgrim.pilgrimNumber) &&
                 Objects.equals(name, pilgrim.name) &&
                 Objects.equals(fatherName, pilgrim.fatherName) &&
                 Objects.equals(motherName, pilgrim.motherName) &&
@@ -268,6 +260,7 @@ public class Pilgrim {
                 Objects.equals(lastModifiedDate, pilgrim.lastModifiedDate) &&
                 Objects.equals(birthDate, pilgrim.birthDate) &&
                 Objects.equals(nid, pilgrim.nid) &&
+                Objects.equals(email, pilgrim.email) &&
                 Objects.equals(maritalStatus, pilgrim.maritalStatus) &&
                 Objects.equals(spouseName, pilgrim.spouseName) &&
                 Objects.equals(occupation, pilgrim.occupation) &&
@@ -279,6 +272,6 @@ public class Pilgrim {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, accountNumber, name, fatherName, motherName, gender, regiDate, lastModifiedDate, birthDate, nid, maritalStatus, spouseName, occupation, address, district, bookingAmount, balanceAmount, ppackage, groupleader);
+        return Objects.hash(id, pilgrimNumber, name, fatherName, motherName, gender, regiDate, lastModifiedDate, birthDate, nid, email, maritalStatus, spouseName, occupation, address, district, bookingAmount, tolalAmount, ppackage, groupleader);
     }
 }

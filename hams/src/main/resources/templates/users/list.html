@@ -64,11 +64,11 @@
                                 <!--
                                                                 <button type="button" class="btn btn-sm btn-primary" th:href="@{'/role/edit/'+${role.id}}">Edit</button>
                                 -->
-                                <a th:href="@{'/user/edit/'+${user.id}}">Edit</a>
+                                <a th:href="@{'/user/edit/'+${user.id}}" class="btn btn-sm btn-primary">Edit</a>
                             </td>
                             <td>
                                 <!--<button type="button" class="btn btn-sm btn-danger" th:href="@{'/role/del/'+${role.id}}">Delete</button>-->
-                                <a th:href="@{'/user/del/'+${user.id}}">Delete</a>
+                                <a th:href="@{'/user/del/'+${user.id}}" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                         </tbody>

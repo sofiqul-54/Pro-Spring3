@@ -57,6 +57,9 @@ public class Groupleader {
     @Column(name = "address")
     private String address;
 
+    @Column(unique = true)
+    private String district;
+
 
     public Groupleader() {
     }
@@ -157,6 +160,14 @@ public class Groupleader {
         this.address = address;
     }
 
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -173,11 +184,12 @@ public class Groupleader {
                 Objects.equals(expDate, that.expDate) &&
                 Objects.equals(mobile, that.mobile) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(address, that.address);
+                Objects.equals(address, that.address) &&
+                Objects.equals(district, that.district);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, leaderName, gender, regiDate, birthDate, nid, passportNo, issuDate, expDate, mobile, email, address);
+        return Objects.hash(id, leaderName, gender, regiDate, birthDate, nid, passportNo, issuDate, expDate, mobile, email, address, district);
     }
 }

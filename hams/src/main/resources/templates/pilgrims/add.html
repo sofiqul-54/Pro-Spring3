@@ -19,30 +19,31 @@
                     <span th:class="err" th:text="${rejectMsg}"></span>
                     <form th:object="${pilgrim}" th:action="@{/pilgrim/add}" th:method="POST">
 
-                        <div class="form-group mb-0">
-                            <label for="package" class="form-label" class="col-sm-3 col-form-label form-label">Package</label>
+
+                        <div class="form-group row">
+                            <label for="ppackage" class="col-sm-3 col-form-label form-label">ppackage</label>
                             <div class="col-sm-9">
-                                <select th:field="*{ppackage}" id="package" name="select" multiple class="form-control js-choice-remove">
-                                    <option th:each="packg : ${packagelist}"
-                                            th:value="${packg.id}">
-                                        <span th:text="${packg.name}"></span>
+                                <select th:field="*{ppackage}"  id="ppackage" class="form-control js-choice-remove">
+                                    <option th:each="pp : ${packagelist}"
+                                            th:value="${pp.id}">
+                                        <span th:text="${pp.name}"></span>
                                     </option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group mb-0">
+                        <!--<div class="form-group mb-0">
                             <label for="group" class="form-label" class="col-sm-3 col-form-label form-label">Package</label>
                             <div class="col-sm-9">
-                                <select th:field="*{groupleader}" id="group" name="select" multiple class="form-control js-choice-remove">
+                                <select th:field="*{groupleader}" id="group" name="select"  class="form-control js-choice-remove">
                                     <option th:each="grop : ${grouplist}"
                                             th:value="${grop.id}">
-                                        <span th:text="${grop.name}"></span>
+                                        <span th:text="${grop.leaderName}"></span>
                                     </option>
                                 </select>
                             </div>
                         </div>
-
+-->
 
 
                         <div class="form-group row">
@@ -163,7 +164,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

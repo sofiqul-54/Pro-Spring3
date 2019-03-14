@@ -68,6 +68,15 @@ public class Pilgrim {
     private double bookingAmount;
     private double tolalAmount;
 
+    //////File Upload==============
+    @Column(nullable = true)
+    private long fileSize;
+    private String fileName;
+    //  @Lob
+    // private byte[] file;
+
+    private String filePath;
+    private String fileExtension;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pk_id", nullable = false)
@@ -227,6 +236,38 @@ public class Pilgrim {
         this.tolalAmount = tolalAmount;
     }
 
+    public long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
+
     public Ppackage getPpackage() {
         return ppackage;
     }
@@ -250,6 +291,7 @@ public class Pilgrim {
         Pilgrim pilgrim = (Pilgrim) o;
         return Double.compare(pilgrim.bookingAmount, bookingAmount) == 0 &&
                 Double.compare(pilgrim.tolalAmount, tolalAmount) == 0 &&
+                fileSize == pilgrim.fileSize &&
                 Objects.equals(id, pilgrim.id) &&
                 Objects.equals(pilgrimNumber, pilgrim.pilgrimNumber) &&
                 Objects.equals(name, pilgrim.name) &&
@@ -266,12 +308,15 @@ public class Pilgrim {
                 Objects.equals(occupation, pilgrim.occupation) &&
                 Objects.equals(address, pilgrim.address) &&
                 Objects.equals(district, pilgrim.district) &&
+                Objects.equals(fileName, pilgrim.fileName) &&
+                Objects.equals(filePath, pilgrim.filePath) &&
+                Objects.equals(fileExtension, pilgrim.fileExtension) &&
                 Objects.equals(ppackage, pilgrim.ppackage) &&
                 Objects.equals(groupleader, pilgrim.groupleader);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pilgrimNumber, name, fatherName, motherName, gender, regiDate, lastModifiedDate, birthDate, nid, email, maritalStatus, spouseName, occupation, address, district, bookingAmount, tolalAmount, ppackage, groupleader);
+        return Objects.hash(id, pilgrimNumber, name, fatherName, motherName, gender, regiDate, lastModifiedDate, birthDate, nid, email, maritalStatus, spouseName, occupation, address, district, bookingAmount, tolalAmount, fileSize, fileName, filePath, fileExtension, ppackage, groupleader);
     }
 }

@@ -2,6 +2,7 @@ package com.sofiqul54.controller;
 
 
 import com.sofiqul54.entity.Pilgrim;
+import com.sofiqul54.entity.Ppackage;
 import com.sofiqul54.entity.User;
 import com.sofiqul54.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,9 @@ public class PilgrimController {
 
 
     @GetMapping(value = "add")
-    public String viewAdd(Model model) {
-        model.addAttribute("pilgrim", new Pilgrim());
+    public String viewAdd(Pilgrim pilgrim, Model model) {
         model.addAttribute("packagelist", this.packageRepo.findAll());
         model.addAttribute("grouplist", this.groupleaderRepo.findAll());
-
         return "pilgrims/add";
     }
 

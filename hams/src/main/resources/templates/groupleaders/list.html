@@ -4,17 +4,17 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Package List</title>
+    <title>Pilgrim List</title>
 </head>
 <body>
 <div class="adminx-main-content" layout:fragment="custom-content">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md">
             <div class="card mb-grid">
                 <div class="table-responsive-lg">
-                    <table class="table table-actions table-striped table-hover mb-0" data-table>
+                    <table class="table table-actions table-striped table-hover mb-0" style="width: 100%" data-table>
                         <thead>
-                        <tr>
+                        <tr class="col-lg">
                             <th scope="col">
                                 <label class="custom-control custom-checkbox m-0 p-0">
                                     <input type="checkbox" class="custom-control-input table-select-all">
@@ -22,10 +22,10 @@
                                 </label>
                             </th>
                             <th scope="col">Id</th>
-                            <th scope="col">Groupleader Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Gender</th>
                             <th scope="col">NID</th>
-                            <th scope="col">Birthdate</th>
+                            <th scope="col">Birth Date</th>
                             <th scope="col">Mobile</th>
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
@@ -39,36 +39,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="g : ${list}">
+                        <tr th:each="pilgrim : ${list}">
                             <th scope="row">
                                 <label class="custom-control custom-checkbox m-0 p-0">
                                     <input type="checkbox" class="custom-control-input table-select-row">
                                     <span class="custom-control-indicator"></span>
                                 </label>
                             </th>
-                            <td th:text="${g.id}"></td>
-                            <td th:text="${g.leaderName}"></td>
-                            <td th:text="${g.gender}"></td>
-                            <td th:text="${g.nid}"></td>
-                            <td th:text="${g.birthDate}"></td>
-                            <td th:text="${g.mobile}"></td>
-                            <td th:text="${g.email}"></td>
-                            <td th:text="${g.address}"></td>
-                           <td th:text="${g.district}"></td>
-                            <td th:text="${g.passportNo}"></td>
-                            <td th:text="${g.issuDate}"></td>
-                            <td th:text="${g.expDate}"></td>
-                            <td th:text="${g.regiDate}"></td>
-
+                            <td th:text="${pilgrim.id}"></td>
+                            <td th:text="${pilgrim.leaderName}"></td>
+                            <td th:text="${pilgrim.gender}"></td>
+                            <td th:text="${pilgrim.nid}"></td>
+                            <td th:text="${pilgrim.birthDate}"></td>
+                            <td th:text="${pilgrim.mobile}"></td>
+                            <td th:text="${pilgrim.email}"></td>
+                            <td th:text="${pilgrim.address}"></td>
+                            <td th:text="${pilgrim.district}"></td>
+                            <td th:text="${pilgrim.passportNo}"></td>
+                            <td th:text="${pilgrim.issuDate}"></td>
+                            <td th:text="${pilgrim.expDate}"></td>
+                            <td th:text="${pilgrim.regiDate}"></td>
                             <td>
-                                <!--
-                                                                <button type="button" class="btn btn-sm btn-primary" th:href="@{'/role/edit/'+${role.id}}">Edit</button>
-                                -->
-                                <a th:href="@{'/groupleader/edit/'+${g.id}}" class="btn btn-sm btn-primary">Edit</a>
+                                <a th:href="@{'/pilgrim/edit/'+${pilgrim.id}}" class="btn btn-sm btn-primary">Edit</a>
                             </td>
                             <td>
-                                <!--<button type="button" class="btn btn-sm btn-danger" th:href="@{'/role/del/'+${role.id}}">Delete</button>-->
-                                <a th:href="@{'/groupleader/del/'+${g.id}}" class="btn btn-sm btn-danger">Delete</a>
+                                <a th:href="@{'/pilgrim/del/'+${pilgrim.id}}" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                         </tbody>

@@ -1,0 +1,64 @@
+package com.coderbd.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.coderbd.entity.Student;
+import com.coderbd.repository.StudentRepo;
+
+
+
+@Controller
+public class StudentController {
+	
+	@Autowired
+	private StudentRepo repo;
+	
+	@GetMapping("/")
+	public String index(Model model) {
+		System.out.println("Size: "+this.repo.findAll().size());
+		model.addAttribute("list", this.repo.findAll());
+		return "list";
+	}
+	
+
+	@GetMapping("/add")
+	public String addView(Model model) {
+		model.addAttribute("student", new Student());
+		return "add";
+	}
+	
+	@PostMapping("/add")
+	public String add(@ModelAttribute("student") Student student, Model model) {
+		this.repo.save(student);
+	//	model.addAttribute("student", new Student());
+		model.addAttribute("successMsg", "Insert Success");
+		return "add";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editView(Model model, @PathVariable("id") Long id) {
+		System.out.println("this.repo.getOne(id).getEmail():: "+this.repo.getOne(id).getEmail());
+		model.addAttribute("student", this.repo.getOne(id));
+		return "edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String edit(@ModelAttribute("student") Student student) {		
+		this.repo.save(student);
+	
+		return "redirect:/";
+	}
+	
+	@GetMapping("/del/{id}")
+	public String addView(@PathVariable("id") Long id) {
+	this.repo.deleteById(id);
+	return "redirect:/";
+	}
+	
+}

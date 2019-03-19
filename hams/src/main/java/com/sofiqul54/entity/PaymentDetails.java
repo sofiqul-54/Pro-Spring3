@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class BookingSummary {
+public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +23,10 @@ public class BookingSummary {
     @JoinColumn(name = "booksummary_package", nullable = false)
     private Ppackage ppackage;//dropdown hobe
 
-    public BookingSummary() {
+    public PaymentDetails() {
     }
 
-    public BookingSummary(double totalAmount, double bookingAmount, double dueAmount, Pilgrim pilgrim, Ppackage ppackage) {
+    public PaymentDetails(double totalAmount, double bookingAmount, double dueAmount, Pilgrim pilgrim, Ppackage ppackage) {
         this.totalAmount = totalAmount;
         this.bookingAmount = bookingAmount;
         this.dueAmount = dueAmount;
@@ -86,7 +86,7 @@ public class BookingSummary {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookingSummary that = (BookingSummary) o;
+        PaymentDetails that = (PaymentDetails) o;
         return Double.compare(that.totalAmount, totalAmount) == 0 &&
                 Double.compare(that.bookingAmount, bookingAmount) == 0 &&
                 Double.compare(that.dueAmount, dueAmount) == 0 &&

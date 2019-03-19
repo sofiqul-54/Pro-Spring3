@@ -4,14 +4,19 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Add Role</title>
+    <title>Add User | HAMS</title>
+    <style>
+        #dd{
+            border: solid #34ce57;
+        }
+    </style>
 </head>
 <body>
 <div class="adminx-main-content" layout:fragment="custom-content">
     <div class="row">
         <div class="col-lg-9">
-            <div class="card mb-grid">
-                <div class="card-header">
+            <div class="card mb-grid" id="dd">
+                <div class="card-header" style="background-color: #34ce57">
                     <div class="card-header-title">Add User</div>
                 </div>
                 <div class="card-body">
@@ -39,7 +44,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lastName" class="col-sm-3 col-form-label form-label">First Name</label>
+                            <label for="lastName" class="col-sm-3 col-form-label form-label">Last Name</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" th:field="*{lastName}"  id="lastName" placeholder="Last Name">
                             </div>

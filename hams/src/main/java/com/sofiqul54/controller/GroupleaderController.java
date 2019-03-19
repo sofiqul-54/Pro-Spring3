@@ -55,7 +55,7 @@ public class GroupleaderController {
 
     @GetMapping(value = "edit/{id}")
     public String viewEdit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("groupleaders", repo.getOne(id));
+        model.addAttribute("groupleader", repo.getOne(id));
         return "groupleaders/edit";
     }
 

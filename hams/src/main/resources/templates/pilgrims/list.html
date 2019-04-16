@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Pilgrim List</title>
+    <title>Pilgrim List | HAMS</title>
 </head>
 <body>
 <div class="adminx-main-content" layout:fragment="custom-content">
@@ -12,7 +12,7 @@
         <div class="col-xs-12">
             <div class="card mb-grid">
                 <div class="table-responsive-lg">
-                    <table class="table table-actions table-striped table-hover mb-0" data-table>
+                    <table class="table table-actions table-striped table-hover mb-0" style="width: 100%" data-table>
                         <thead>
                         <tr>
                             <th scope="col">
@@ -30,9 +30,13 @@
                             <th scope="col">Birthdate</th>
                             <th scope="col">NID</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Marital Status</th>
+                           <!-- <th scope="col">Marital Status</th>-->
                             <th scope="col">Spouse Name</th>
                             <th scope="col">Occupation</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Home District</th>
+                            <th scope="col">Booking Money</th>
+                            <th scope="col">Total Amount</th>
                             <th scope="col">Reg. Date</th>
                             <th scope="col">LM. Date</th>
                             <th scope="col">Package Name</th>
@@ -58,9 +62,13 @@
                             <td th:text="${pilgrim.birthDate}"></td>
                             <td th:text="${pilgrim.nid}"></td>
                             <td th:text="${pilgrim.email}"></td>
-                            <td th:text="${pilgrim.maritalStatus}"></td>
+                           <!-- <td th:text="${pilgrim.maritalStatus}"></td>-->
                             <td th:text="${pilgrim.spouseName}"></td>
                             <td th:text="${pilgrim.occupation}"></td>
+                            <td th:text="${pilgrim.address}"></td>
+                            <td th:text="${pilgrim.district}"></td>
+                            <td th:text="${pilgrim.bookingAmount}"></td>
+                            <td th:text="${pilgrim.tolalAmount}"></td>
                             <td th:text="${pilgrim.regiDate}"></td>
                             <td th:text="${pilgrim.lastModifiedDate}"></td>
                             <td>

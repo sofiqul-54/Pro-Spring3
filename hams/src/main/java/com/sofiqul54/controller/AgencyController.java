@@ -2,7 +2,6 @@ package com.sofiqul54.controller;
 
 import com.sofiqul54.entity.Role;
 import com.sofiqul54.repo.AgencyRepo;
-import com.sofiqul54.repo.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,6 +76,6 @@ public class AgencyController {
     @GetMapping(value = "list")
     public String list(Model model){
         model.addAttribute("list", this.agencyRepo.findAll());
-    return "roles/list";
+    return "rolelist";
     }
 }

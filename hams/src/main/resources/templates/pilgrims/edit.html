@@ -4,19 +4,25 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Add Pilgrim</title>
+    <title>Edit Pilgrim | HAMS</title>
+    <style>
+        #dd{
+            border: solid #34ce57;
+        }
+    </style>
 </head>
 <body>
 <div class="adminx-main-content" layout:fragment="custom-content">
     <div class="row">
         <div class="col-lg-9">
-            <div class="card mb-grid">
-                <div class="card-header">
+            <div class="card mb-grid" id="dd">
+                <div class="card-header" style="background-color: #34ce57">
                     <div class="card-header-title">Edit Pilgrim</div>
                 </div>
                 <div class="card-body">
+
                     <span th:class="err" th:text="${rejectMsg}"></span>
-                    <form th:object="${pilgrim}" th:action="@{/pilgrim/add/}+${id}" th:method="POST">
+                    <form th:object="${pilgrim}" th:action="@{/pilgrim/edit/}+${id}" th:method="POST">
 
 
                         <div class="form-group row">
@@ -103,7 +109,7 @@
                             <label for="nid" class="col-sm-3 col-form-label form-label">NID</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" th:field="*{nid}" id="nid"
-                                       placeholder="nid">
+                                       placeholder="National Idendification Number">
                             </div>
                         </div>
 
@@ -111,11 +117,11 @@
                             <label for="email" class="col-sm-3 col-form-label form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" th:field="*{email}" id="email"
-                                       placeholder="Email">
+                                       placeholder="Valid Email">
                             </div>
                         </div>
 
-                        <fieldset class="form-group">
+                        <!--<fieldset class="form-group">
                             <div class="row">
                                 <legend class="col-form-legend col-sm-3 form-label">Maritual Status</legend>
                                 <div class="col-sm-9">
@@ -124,30 +130,60 @@
                                             <input class="form-check-input" type="radio" name="maritalStatus" id="Married"
                                                    value="Male" checked th:field="*{maritalStatus}"> Married &nbsp&nbsp&nbsp&nbsp
                                             <input class="form-check-input" type="radio" name="maritalStatus" id="Single"
-                                                   value="Single" th:field="*{gender}"> Single
+                                                   value="Single" th:field="*{maritalStatus}"> Single
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
+                        </fieldset>-->
 
                         <div class="form-group row">
-                            <label for="spouseName" class="col-sm-3 col-form-label form-label">Spouse Name</label>
+                            <label for="spouseName" class="col-sm-3 col-form-label form-label">Spouse Name  (if married)</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" th:field="*{spouseName}" id="spouseName"
+                                <input type="text" class="form-control" th:field="*{spouseName}" id="spouseName"
                                        placeholder="Spouse Name">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-sm-3 col-form-label form-label">Occupation</label>
+                            <label for="occupation" class="col-sm-3 col-form-label form-label">Occupation</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" th:field="*{occupation}" id="mobile"
-                                       placeholder="Mobile">
+                                <input type="text" class="form-control" th:field="*{occupation}" id="occupation"
+                                       placeholder="Occupation">
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="address" class="col-sm-3 col-form-label form-label">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:field="*{address}" id="address"
+                                       placeholder="Address">
+                            </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <label for="district" class="col-sm-3 col-form-label form-label">District</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:field="*{district}" id="district"
+                                       placeholder="Home District">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="bookingAmount" class="col-sm-3 col-form-label form-label">Booking Amount</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" th:field="*{bookingAmount}" id="bookingAmount"
+                                       placeholder="Booking Amount">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="filePath" class="col-sm-3 col-form-label form-label">Photo</label>
+                            <div class="col-sm-9">
+                                <input type="file" class="form-control" th:field="*{filePath}" id="filePath"
+                                       placeholder="Photo">
+                            </div>
+                        </div>
 
 
 

@@ -31,7 +31,7 @@ private PasswordEncoder passwordEncoder;
 
         Set<Role> roles=new HashSet<>();
         roles.add(new Role("SUPERADMIN"));
-        roles.add(new Role("ADMIN"));
+       /* roles.add(new Role("ADMIN"));*/
         /*roles.add(new Role("STAFF"));
         roles.add(new Role("GROUPLEADER"));
         roles.add(new Role("USER"));*/

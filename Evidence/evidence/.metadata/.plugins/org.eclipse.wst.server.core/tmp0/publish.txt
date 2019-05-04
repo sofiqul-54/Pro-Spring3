@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Mar 16 12:47:33 BDT 2019
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\User\\Desktop\\evidence\\evi1\\webapp\\WEB-INF\\lib\\spring-web-5.1.0.RELEASE.jar=E\:\\Software\\spring-tool-suite-3.9.7.RELEASE-e4.10.0-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\evi1\\WEB-INF\\lib\\spring-web-5.1.0.RELEASE.jar
+org.eclipse.jst.jee.server\:evi1=E\:\\Software\\spring-tool-suite-3.9.7.RELEASE-e4.10.0-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\evi1

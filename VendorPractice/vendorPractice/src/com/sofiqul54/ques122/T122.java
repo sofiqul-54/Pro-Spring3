@@ -3,25 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sofiqul54;
+package com.sofiqul54.ques122;
+
+import com.sofiqul54.*;
 
 /**
  *
  * @author sofiqul54
  */
-public class T105 {
-    char c;
-    boolean b;
-    float f;
-    void printAll(){
-        System.out.println("c="+c);
-        System.out.println("b="+b);
-        System.out.println("f="+f);
-    }
-    
+public class T122 {
     public static void main(String[] args) {
-        T105 f = new T105();
-        f.printAll();
+        int i = 10;
+        int j = 20;
+        int k =j+=i/5;
+        System.out.println(i+":"+j+":"+k);
     }
     
 }
